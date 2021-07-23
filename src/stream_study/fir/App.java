@@ -37,5 +37,13 @@ public class App {
         System.out.println("===대문자로 바뀐거 확인===");
         //대문자로 바뀐 것도 확인할 수 있다.
         collect.forEach(System.out::println);
+
+        // 병럴처리
+        List<String> collect1 = names.parallelStream().map((s)->{
+            System.out.println(s+" " + Thread.currentThread().getName());
+            return s.toUpperCase();
+        }).collect(Collectors.toList());
+
+        collect1.forEach(System.out::println);
     }
 }
